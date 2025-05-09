@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout(() => {
             isDeleting = true;
             typeLoop();
-          }, 1200);
+          }, 1800);
           return;
         }
       } else {
@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typeLoop();
 
-    // หิมะตก (pixel snow) โดยไม่มีการตอบสนองต่อการเลื่อนเมาส์
+    // หิมะตก (pixel snow)
     const canvas = document.getElementById("snow-canvas");
     const ctx = canvas.getContext("2d");
 
@@ -41,8 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
       flakes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.floor(Math.random() * 2) + 1,
-        speed: Math.random() * 1 + 0.01
+        size: Math.random() * 1.5 + 0.5,  // ขนาดหิมะเล็กลง
+        speed: Math.random() * 1.5 + 0.01  // ความเร็วหิมะเพิ่มขึ้น
       });
     }
 
