@@ -106,12 +106,12 @@ body {
     z-index: 0;
   }  
   .chatgpt-link {
-  color: #ffffff; /* เปลี่ยนสีได้ตามต้องการ เช่น ฟ้าอมเขียว */
+  color: #ffffff; /* เปลี่ยนสี */
   font-weight: bold;
   text-decoration: none;
 }
 
 .chatgpt-link:hover {
   text-decoration: underline;
-  color: #f1ff32; /* สีเมื่อ hover */
+  color: #fbff00; /* สีเมื่อ hover */
 }
