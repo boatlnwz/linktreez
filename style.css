@@ -128,22 +128,22 @@ footer {
   overflow: hidden;
   width: 100%;
   max-width: 300px;
-  height: 180px;
+  height: 270px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;  /* ทำให้พื้นหลังใส */
+  background: transparent;  
   padding: 0;
 }
 
 #screen {
   margin: 0;
   padding: 0;
-  color: rgb(165, 248, 184);
+  color: rgb(87, 253, 125);
   font-family: monospace;
   font-size: 10px;
   line-height: 10px;
-  background: transparent; /* ลบพื้นหลัง */
+  background: transparent; 
   margin: 0;
   padding: 0;
   white-space: pre;
@@ -152,5 +152,5 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
