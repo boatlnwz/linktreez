@@ -1,117 +1,156 @@
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #000000;
-    color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
-  }
-  
-  .container {
-    text-align: center;
-    background: #111111;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0, 255, 102, 0.1);
-    max-width: 400px;
-    width: 90%;
-    margin-top: 40px;
-  }
-  
-  .profile-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #00ff66;
-    margin-bottom: 15px;
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
-  }
-  
-  h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffffff;
-  }
-  
-  .link-list a {
-    display: block;
-    margin: 12px 0;
-    padding: 12px;
-    background: #222222;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 10px;
-    transition: all 0.3s ease;
-    font-size: 18px;
-  }
-  
-  .link-list a:hover {
-    background: #8ee88e;
-    color: #000000;
-    transform: scale(1.05);
-  }
-  
-  .link-list a i {
-    margin-right: 8px;
-  }
-  
-  .music-embed {
-    margin-top: 30px;
-  }
-  
-  .music-embed h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #ffffff;
-  }
-  
-  footer {
-    margin: 30px 0;
-    text-align: center;
-    font-size: 14px;
-    color: #888888;
-  }
-  .typing-text {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #ffffff;
-    height: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-align: center;
-  }
-  
-  .cursor {
-    display: inline-block;
-    margin-left: 0px;
-    width: 0ch;
-    animation: blink 0.8s infinite;
-    color: #ffffff;
-  }
-  
-  @keyframes blink {
-    0%, 50% { opacity: 1; }
-    51%, 100% { opacity: 0; }
-  }
-  #snow-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }  
-  .chatgpt-link {
-  color: #ffffff; /* เปลี่ยนสี */
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background: #111111;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0, 255, 102, 0.1);
+  max-width: 400px;
+  width: 90%;
+  margin-top: 40px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00ff66;
+  margin-bottom: 15px;
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.link-list a {
+  display: block;
+  margin: 12px 0;
+  padding: 12px;
+  background: #222222;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 18px;
+}
+
+.link-list a:hover {
+  background: #8ee88e;
+  color: #000000;
+  transform: scale(1.05);
+}
+
+.link-list a i {
+  margin-right: 8px;
+}
+
+.music-embed {
+  margin-top: 30px;
+}
+
+.typing-text {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 0px;
+  width: 0ch;
+  animation: blink 0.8s infinite;
+  color: #ffffff;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+#snow-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+footer {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #888888;
+}
+
+.chatgpt-link {
+  color: #ffffff;
   font-weight: bold;
   text-decoration: none;
 }
 
 .chatgpt-link:hover {
   text-decoration: underline;
-  color: #fbff00; /* สีเมื่อ hover */
+  color: #fbff00;
+}
+
+#ascii-cube-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+#ascii-cube-container {
+  color: white;
+  font-family: monospace;
+  font-size: 6px;
+  line-height: 6px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;  /* ทำให้พื้นหลังใส */
+  padding: 0;
+}
+
+#screen {
+  margin: 0;
+  padding: 0;
+  color: rgb(165, 248, 184);
+  font-family: monospace;
+  font-size: 10px;
+  line-height: 10px;
+  background: transparent; /* ลบพื้นหลัง */
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+}
+#ascii-cube-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
