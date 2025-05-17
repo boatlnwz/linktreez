@@ -11,25 +11,21 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
+<script src="main.js"></script>
 <body>
   <canvas id="snow-canvas"></canvas>
+
   <div class="container">
     <img src="profilezz.jpg" alt="Boat Profile" class="profile-img" />
 
     <h1 class="typing-text">
-      <span id="typed"></span><span class="cursor">|</span>
+      <span id="typed">Welcome to Boat_bananaz</span><span class="cursor">|</span>
     </h1>
 
     <div class="link-list">
-      <a href="https://drive.google.com/file/d/1a0zkxStpXUMEIQXtf6s-KobzQdfi3_6T/view?usp=sharing" target="_blank">
-        🎁 Give Away
-      </a>
-      <a href="https://www.facebook.com/chaiyanun.boat/" target="_blank">
-        <i class="fab fa-facebook-f"></i> Facebook
-      </a>
-      <a href="https://www.instagram.com/boat_bananaz/" target="_blank">
-        <i class="fab fa-instagram"></i> Instagram
-      </a>
+      <a href="https://drive.google.com/file/d/1a0zkxStpXUMEIQXtf6s-KobzQdfi3_6T/view?usp=sharing" target="_blank">🎁 Give Away</a>
+      <a href="https://www.facebook.com/chaiyanun.boat/" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a>
+      <a href="https://www.instagram.com/boat_bananaz/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
     </div>
 
     <div class="music-embed">
@@ -40,13 +36,106 @@
               src="https://embed.music.apple.com/th/playlist/my-2010s-dreamcore/pl.u-d2b05V0TL7mPoaM">
       </iframe>
     </div>
+
+    <div id="ascii-cube-wrapper">
+      <div id="ascii-cube-container">
+        <pre id="screen"></pre>
+      </div>
+    </div>
   </div>
 
-<footer>
-  <p>© 2025 <strong>Boat_bananaz</strong> nakub jubjub</p>
-  special thanks <a href="https://chat.openai.com" target="_blank" class="chatgpt-link">ChatGPT</a> ทำเองม่ายเปงค้าบบ 🙂‍↕️🙂‍↕️
-</footer>
+  <footer>
+   <p> Special thanks <a href="https://chat.openai.com" target="_blank" class="chatgpt-link">ChatGPT</a> ทำเองม่ายเปงค้าบบ 🙂‍↕️🙂‍↕️</p> 
+  </footer>
 
-  <script src="main.js"></script>
+
+  <!-- แปลงโค้ดมาจาก https://youtu.be/p09i_hoFdd0?si=pujZyufN-VsRRnyp เห็นเฟี้ยวฟ้าวดีครับบ -->
+ <script> 
+    const screen = document.getElementById("screen");
+    const width = 30;
+    const height = 15;
+    let A = 0, B = 0, C = 0;
+
+    const aspectRatio = 1.5;
+    const buffer = new Array(width * height);
+    const zBuffer = new Array(width * height);
+
+    const sin = Math.sin, cos = Math.cos;
+
+    const K1 = 40;
+    const distanceFromCam = 100;
+    const cubeWidth = 10;
+    const incrementSpeed = 2;
+
+    function clearBuffer() {
+      buffer.fill(" ");
+      zBuffer.fill(0);
+    }
+
+    function idx(x, y) {
+      return x + y * width;
+    }
+
+    function calculateX(i, j, k) {
+      return j * sin(A) * sin(B) * cos(C) - k * cos(A) * sin(B) * cos(C)
+          + j * cos(A) * sin(C) + k * sin(A) * sin(C) + i * cos(B) * cos(C);
+    }
+
+    function calculateY(i, j, k) {
+      return j * cos(A) * cos(C) + k * sin(A) * cos(C)
+          - j * sin(A) * sin(B) * sin(C) + k * cos(A) * sin(B) * sin(C)
+          - i * cos(B) * sin(C);
+    }
+
+    function calculateZ(i, j, k) {
+      return k * cos(A) * cos(B) - j * sin(A) * cos(B) + i * sin(B);
+    }
+
+    function calculateForSurface(cubeX, cubeY, cubeZ, ch) {
+      let x = calculateX(cubeX, cubeY, cubeZ);
+      let y = calculateY(cubeX, cubeY, cubeZ);
+      let z = calculateZ(cubeX, cubeY, cubeZ) + distanceFromCam;
+
+      let ooz = 1 / z;
+      let xp = Math.floor(width / 2 + K1 * ooz * x * aspectRatio);
+      let yp = Math.floor(height / 2 + K1 * ooz * y);
+      let i = idx(xp, yp);
+
+      if (i >= 0 && i < width * height && ooz > zBuffer[i]) {
+        zBuffer[i] = ooz;
+        buffer[i] = ch;
+      }
+    }
+
+    function render() {
+      clearBuffer();
+
+      for (let cubeX = -cubeWidth; cubeX <= cubeWidth; cubeX += incrementSpeed) {
+        for (let cubeY = -cubeWidth; cubeY <= cubeWidth; cubeY += incrementSpeed) {
+          calculateForSurface(cubeX, cubeY, -cubeWidth, '@');
+          calculateForSurface(cubeX, cubeY,  cubeWidth, '=');
+          calculateForSurface(-cubeWidth, cubeX, cubeY, '$');
+          calculateForSurface( cubeWidth, cubeX, cubeY, '#');
+          calculateForSurface(cubeX, -cubeWidth, cubeY, '+');
+          calculateForSurface(cubeX,  cubeWidth, cubeY, '*');
+        }
+      }
+
+      let output = "";
+      for (let k = 0; k < width * height; k++) {
+        output += k % width === 0 ? "\n" + (buffer[k] || " ") : (buffer[k] || " ");
+      }
+
+      screen.textContent = output;
+
+      A += 0.01;
+      B += 0.01;
+      C += 0.01;
+
+      requestAnimationFrame(render);
+    }
+
+    render();
+  </script>
 </body>
 </html>
