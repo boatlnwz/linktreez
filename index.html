@@ -49,11 +49,11 @@
   </footer>
 
 
-  <!-- แปลงโค้ดมาจาก https://youtu.be/p09i_hoFdd0?si=pujZyufN-VsRRnyp เห็นเฟี้ยวฟ้าวดีครับบ -->
+  <!-- แปลงโค้ดมาจาก https://youtu.be/p09i_hoFdd0?si=pujZyufN-VsRRnyp เห็นเฟี้ยวฟ้าวดีครับบ ก้อปเลยยย-->
  <script> 
     const screen = document.getElementById("screen");
-    const width = 30;
-    const height = 15;
+    const width = 60;
+    const height = 100;
     let A = 0, B = 0, C = 0;
 
     const aspectRatio = 1.5;
@@ -63,9 +63,9 @@
     const sin = Math.sin, cos = Math.cos;
 
     const K1 = 40;
-    const distanceFromCam = 100;
-    const cubeWidth = 10;
-    const incrementSpeed = 2;
+    const distanceFromCam = 132;
+    const cubeWidth = 25;
+    const incrementSpeed = 8;
 
     function clearBuffer() {
       buffer.fill(" ");
@@ -112,12 +112,12 @@
 
       for (let cubeX = -cubeWidth; cubeX <= cubeWidth; cubeX += incrementSpeed) {
         for (let cubeY = -cubeWidth; cubeY <= cubeWidth; cubeY += incrementSpeed) {
-          calculateForSurface(cubeX, cubeY, -cubeWidth, '@');
-          calculateForSurface(cubeX, cubeY,  cubeWidth, '=');
-          calculateForSurface(-cubeWidth, cubeX, cubeY, '$');
-          calculateForSurface( cubeWidth, cubeX, cubeY, '#');
-          calculateForSurface(cubeX, -cubeWidth, cubeY, '+');
-          calculateForSurface(cubeX,  cubeWidth, cubeY, '*');
+          calculateForSurface(cubeX, cubeY, -cubeWidth, '0');
+          calculateForSurface(cubeX, cubeY,  cubeWidth, '1');
+          calculateForSurface(-cubeWidth, cubeX, cubeY, '2');
+          calculateForSurface( cubeWidth, cubeX, cubeY, '3');
+          calculateForSurface(cubeX, -cubeWidth, cubeY, '4');
+          calculateForSurface(cubeX,  cubeWidth, cubeY, '5');
         }
       }
 
@@ -128,9 +128,9 @@
 
       screen.textContent = output;
 
-      A += 0.01;
-      B += 0.01;
-      C += 0.01;
+      A += 0.02;
+      B += 0.02;
+      C += 0.02;
 
       requestAnimationFrame(render);
     }
